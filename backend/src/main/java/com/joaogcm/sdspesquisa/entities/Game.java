@@ -25,7 +25,7 @@ public class Game implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private Integer platform;
+	private Platform platform;
 	
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
@@ -41,7 +41,7 @@ public class Game implements Serializable {
 	public Game(Long id, String title, Platform platform, Genre genre) {
 		this.id = id;
 		this.title = title;
-		this.platform = platform.getStatus();
+		this.platform = platform;
 		this.genre = genre;
 	}
 	
@@ -62,11 +62,11 @@ public class Game implements Serializable {
 	}
 	
 	public Platform getPlatform() {
-		return Platform.status(platform);
+		return platform;
 	}
 	
 	public void setPlatform(Platform platform) {
-		this.platform = platform.getStatus();
+		this.platform = platform;
 	}
 	
 	public Genre getGenre() {
